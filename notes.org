@@ -1,0 +1,47 @@
+#+TITLE: Design notes
+
+See https://en.wikipedia.org/wiki/Transition_system#Category_theoretic_formalization
+
+- An action is a *pure*, total function =a: state -> state option=
+- Brute force:
+  + apply each action
+    - if =Some s'=, then we transition
+    - if =None=, then we try the next action
+    - if no actions apply, we have reached a deadlock (or termination)
+  + if we have seen a state before, we back track to previous branches
+- Property:
+  + An invariant is a function =inv: state * state -> bool=
+  + For each pair of states =s= and =s'= we apply =inv s s'=. When false, our
+    property has been violated.
+- Symbolic:
+  - Since the functions are total, we can compute their extension, and encode
+    that as SMT constraints?
+- Look at "Dealing with Functional Programs as Data" in "Programming in
+  Higher-order Logic".
+- Sub-state transitions can be defined simply as functions that map over
+  sub-components of the state, but we'll need a way to give those possibly
+  non-deterministic execution.
+
+In (cite:baier08_princ) a state is represented by a "set of atomic
+propositions" (20). So couldn't the transition system just be a derivation,
+according to rules that say how to derive some set of propositions from others?
+
+- state :: Set of atomic propositions == conjunction of atomic propositions,
+  e.g., =S = a & b & c=
+- action :: Linear implication from one conjunction to another =S -o S'=. This makes
+  an action a first-order horn clause cite:miller2012programming).
+  - Since the change of state usually removal of some atomic facts, the
+    implication must be linear.
+  - Let's call the set of actions =A=.
+- invariant :: A disjunction of propositions on the right of the turnstile.
+  - safety :: A proposition on the right of the turnstile: =S, A --> Safe=
+  - liveness :: A higher-order  proposition =(S, A --> I) --> Live=
+
+** References
+
+- A proof theory for model checking :: https://hal.inria.fr/hal-01814006/file/hal.pdf
+  + An Overview of Linear Logic Programming :: http://www.lix.polytechnique.fr/~dale/papers/llp.pdf
+- Answer Set Programming and Bounded Model Checking :: https://www.aaai.org/Papers/Symposia/Spring/2001/SS-01-01/SS01-01-015.pdf
+- SCTL: Towards Combining Model Checking and Proof Checking :: https://arxiv.org/pdf/1606.08668.pdf
+
+bibliography:../../../Dropbox/bibliography/references.bib

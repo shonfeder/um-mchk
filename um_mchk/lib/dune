@@ -1,0 +1,4 @@
+(library
+ (name lib)
+ (libraries ppx_compare.runtime-lib bos sexplib)
+ (preprocess (pps ppx_compare ppx_sexp_conv)))

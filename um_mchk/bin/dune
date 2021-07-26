@@ -1,0 +1,4 @@
+(executable
+ (public_name um-mchk)
+ (name main)
+ (libraries lib))
