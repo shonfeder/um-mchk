@@ -3,6 +3,7 @@ module type S = sig
 
   type state
 
+  (** It is assumed that ay transition is a pure, total function. *)
   type transition = state -> state option
 
   val to_string : t -> string
@@ -15,7 +16,7 @@ module type S = sig
 
   (** (s --> s') is a transition from [s] to [`s].
 
-      It is desabled for any state [t <> s]. *)
+      It is disabled for any state [t <> s]. *)
   val (-->) : state -> state -> transition
 
   module Set : Set.S with type elt = t
