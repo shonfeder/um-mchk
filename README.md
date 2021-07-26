@@ -1,3 +1,3 @@
 # um-mchk
 
-Sketchy notes and experiments on model checking.
+Sketchy notes and experiments with model checking.
