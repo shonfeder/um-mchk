@@ -2,7 +2,8 @@
 
 See https://en.wikipedia.org/wiki/Transition_system#Category_theoretic_formalization
 
-- An action is a *pure*, total function =a: state -> state option=
+* Naive sketch of experimental implementation
+- An action is the (application of) a *pure*, total function =a: state -> state option=
 - Brute force:
   + apply each action
     - if =Some s'=, then we transition
@@ -37,11 +38,113 @@ according to rules that say how to derive some set of propositions from others?
   - safety :: A proposition on the right of the turnstile: =S, A --> Safe=
   - liveness :: A higher-order  proposition =(S, A --> I) --> Live=
 
-** References
+* TODO Critique of the regnant approach to model checking
+
+From a media/techno-critical theoretical perspective, the following assumptions
+that seem to be maintained by the prevailing approach to model checking seem
+deserving of careful criticism:
+
+- Representationalism :: model vs. reality
+  - So it leaves a gulf that invites skepticism
+- Atomism :: a state is a set of atomic values
+  - By actual being is only its relations of becoming.
+  - Being is not a sequence of static states, it is a rhythmic, relational,
+    flow, wherein each thing is inexhaustibly differentiable and inextricably
+    intertwined with its neighbors.
+
+* TODO Some notes on LTL
+
+
+Putting aside a general critique or skepticism of modality, I think there is
+reason to expect that it is a deeply inadequate way to encode the phenomena of
+time into logic.
+
+The atomistic assumptions of the way time, and "state" gets represented is
+deeply problematic. It inherits the problems inherent to the modern
+theorization, and treats time in a way that is quite regressive. Not only does
+is it inadequate to the phenomenological reality of time (and logic must above
+all be adequate to what is given in phenomenological "self-evidence"), it is not
+even up to date with relativistic insights. The treatment of time Newtonian.
+
+My hypothesis is that a "proper" encoding of time should treat objects as purely
+relational, and time as the continuously evolving deformations and interactions
+of the relationality. And
+
+In conversation with [[https://boarders.github.io/][Callan McGill]]:
+
+Callan:
+
+#+begin_quote
+in a distributed setting time is very up for grabs
+#+end_quote
+
+Me:
+
+#+end_quote
+Yes! The whole assumption that there is a universal clock goes out the window in
+a distsys But the assumption that we can slice up times into discrete moment
+chunks is the assumption of universal clock!
+#+begin_quote
+
+Callan:
+
+#+begin_quote
+it is a sort of double assumption I would say
+the assumption of a universal clock in that:
+1. we all have a shared starting point
+2. We all have reference to the evolution of time intervals from that starting point
+#+end_quote
+
+Me:
+
+#+begin_quote
+yeah, exactly.
+
+And then there's also the assumption that the way change happens is by
+discontinuous replacement of values/atomic propositions.
+#+end_quote
+
+** TODO Add reference to constructive LTL papers
+- http://www.fos.kuis.kyoto-u.ac.jp/~igarashi/papers/pdf/cltl.pdf
+- https://vcvpaiva.github.io/includes/pubs/2017-grisha.pdf
+
+* Tasks
+** TODO Link to notes on modality
+
+* References
 
 - A proof theory for model checking :: https://hal.inria.fr/hal-01814006/file/hal.pdf
   + An Overview of Linear Logic Programming :: http://www.lix.polytechnique.fr/~dale/papers/llp.pdf
 - Answer Set Programming and Bounded Model Checking :: https://www.aaai.org/Papers/Symposia/Spring/2001/SS-01-01/SS01-01-015.pdf
 - SCTL: Towards Combining Model Checking and Proof Checking :: https://arxiv.org/pdf/1606.08668.pdf
 
+
+** TODO Bridging the divide
+- Abramsky - Relating Structure and Power :: https://arxiv.org/pdf/2010.06496.pdf
+
+** TODO Theory of COncurrencly
+
+- Abramsky - [[https://pdf.sciencedirectassets.com/272990/1-s2.0-S1571066106X02645/1-s2.0-S1571066106004105/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEMr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICw1qEMvL2X58h2Ye7n7nzUyJKunJN0A99r%2BThmVFuLeAiEA8GUwtgT1714DGH2IZQZMfXGQHEND96DNk%2FV%2BIGD0HRsqgwQI0%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAEGgwwNTkwMDM1NDY4NjUiDGK3u6EfssgKBYf7tirXAwC355KUBTJMwKcDAYuo5t9M2k9XZ0B8RrY5ESZHiO9YpEcnfbbmSCn5q%2BcrYsmMnWuIToNfEeDQguDD1vYIgsMsXdgoOt7%2F8EcSkel5n8jwLe6nupGqkkEt0AZY0vqTT5CdGPYaKH%2BR0ZYPDQ9yGUFpSXQtY6Q9AR34TBCIEZ1u7U4MoR3lSrjix0kzBy1Pk%2FadTqg1pwMzGd45BB2VWydXs2Y%2FTpxiqhju5DJU6H5ZLdyIatCjqSShM3NaEsvAkZiY9J7BBpXEjMtU5O6fZsbAobGiZG0dO1rRPDodeh6vcCHkcswhhO4DST5vjaCgFqUTUxRhcoXeLhH3iJubULqW%2FFfmR2KV%2Bu9rLKyQO%2BMtFP%2F6gTaB3J0%2FkQk0VTW2gbJIWvaGCzCKD7akldShvBdMUvHHNEsSQCplxHAo%2Fg%2BToj50raWo8TM1O5H4nzpVewKipAyyDi0DTa0qIl2SI4qqLF2l59twObv0hl6i7%2FQmZI4mpdbDBYvjFU5GRdt%2BImIyZ2WYKtZW7O3jBzFzQYhOHORFK%2FJFi7n5frAIanYSPTSymMy3SbFHAWaOO2tzOiYqHvylVa3yiZ6Lh6qQbb0bIr04QBp%2Bz7nK5hlb1Lj9lVwp%2BMDOsjD%2B35mIBjqlAeXDc4p26O3R2aqQHH2%2FezAKzLz2X1fuMw3BvPABF3u2FJ5qSUa1mlSWpBKA4FJwEJXu9ucHxIOS%2BXY7ZyeoUunq2I0WKWK4mBj0d5uz92tF5vPfGZZPZTQJVNDl0sFrXd84f4VedHY4922vs6%2F4k%2B0jmZ1j9qo897EQje7OolEOByvQtMfR78TXJGUeRKrWPCyf0RRxepRlPuLLTGZJBU6kYbX1rw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210801T104436Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUTHKID7R%2F20210801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=41f17831cc99de38411509a8698a49ac4c3721d17208a3be271fcf353ae28a83&hash=56d74950415bb4b5b8b6cb6216bc35b8340924b39078f6d4c25243ef94f5e654&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1571066106004105&tid=spdf-97e6cc00-c642-43a7-b302-fb90c00d7f8f&sid=5b046d574b1982493f5bc8b-c27dd37e3607gxrqa&type=client][What are the Fundamental Structures of Concurrency? We still don’t know!]]
+- Goubault - [[https://www.intlpress.com/site/pub/files/_fulltext/journals/hha/2003/0005/0002/HHA-2003-0005-0002-a005.pdf][SOME GEOMETRIC PERSPECTIVES IN CONCURRENCY THEORY]]
+
+** TODO Modelchecking and topology
+
+- https://doi.org/10.1017/S0960129500003133
+- https://www.uni-koblenz-landau.de/en/campus-koblenz/fb4/ics/RGVSS/team/viorica-sofronie-stokkermans
+** TODO Seaves, Objects, and Distributed Systems
+
+- https://reader.elsevier.com/reader/sd/pii/S1571066108005264?token=CFA95A839B749BFD193790292C3B227FD6EC6506F92FF3643EEBB91EDECBB458EF2BA011880018F6F6A722D85A70FE83&originRegion=us-east-1&originCreation=20210728190438
+- https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1006&context=computer_science_stures
+
+** TODO LL, Game Semantics, GoI
+
+- Applications of Game Semantics: From Program Analysis to Hardware Synthesis :: https://www.cs.bham.ac.uk/~drg/papers/lics09tut.pdf
+- New Directions and Challenges in Interactive Semantics :: https://shonan.nii.ac.jp/seminars/175/
+- Finitary Semantics of Linear Logic and Higher-Order Model-Checking :: https://www.researchgate.net/publication/272521886_Finitary_Semantics_of_Linear_Logic_and_Higher-Order_Model-Checking
+
+** TODO Higher order model checking
+- Model Checking Higher-Order Programs :: http://www-kb.is.s.u-tokyo.ac.jp/~koba/papers/hmc.pdf
+- 10 Years of the Higher-Order Model Checking Project :: https://dl.acm.org/doi/10.1145/3354166.3354167
+
+* Bib
 bibliography:../../../Dropbox/bibliography/references.bib
